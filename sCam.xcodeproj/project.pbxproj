@@ -15,6 +15,11 @@
 		50A5EC0F26F20217006E1F46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50A5EC0D26F20217006E1F46 /* LaunchScreen.storyboard */; };
 		50A5EC1A26F20217006E1F46 /* sCamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A5EC1926F20217006E1F46 /* sCamTests.swift */; };
 		50A5EC2526F20217006E1F46 /* sCamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A5EC2426F20217006E1F46 /* sCamUITests.swift */; };
+		50F7E15C26F9E4500041EED8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F7E15B26F9E4500041EED8 /* MainView.swift */; };
+		50F7E15E26F9E4620041EED8 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F7E15D26F9E4620041EED8 /* MainModel.swift */; };
+		50F7E16026F9E4EA0041EED8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F7E15F26F9E4EA0041EED8 /* MainViewController.swift */; };
+		50F7E16426F9E66D0041EED8 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F7E16326F9E66D0041EED8 /* Const.swift */; };
+		50F7E16626F9EB100041EED8 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F7E16526F9EB100041EED8 /* Utility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +54,11 @@
 		50A5EC2026F20217006E1F46 /* sCamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sCamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		50A5EC2426F20217006E1F46 /* sCamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sCamUITests.swift; sourceTree = "<group>"; };
 		50A5EC2626F20217006E1F46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50F7E15B26F9E4500041EED8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		50F7E15D26F9E4620041EED8 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
+		50F7E15F26F9E4EA0041EED8 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		50F7E16326F9E66D0041EED8 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		50F7E16526F9EB100041EED8 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +112,8 @@
 				50A5EC0226F20216006E1F46 /* AppDelegate.swift */,
 				50A5EC0426F20216006E1F46 /* SceneDelegate.swift */,
 				50A5EC0626F20216006E1F46 /* ViewController.swift */,
+				50F7E16226F9E6570041EED8 /* Common */,
+				50F7E16126F9E50D0041EED8 /* Main */,
 				50A5EC0826F20216006E1F46 /* Main.storyboard */,
 				50A5EC0B26F20217006E1F46 /* Assets.xcassets */,
 				50A5EC0D26F20217006E1F46 /* LaunchScreen.storyboard */,
@@ -126,6 +138,25 @@
 				50A5EC2626F20217006E1F46 /* Info.plist */,
 			);
 			path = sCamUITests;
+			sourceTree = "<group>";
+		};
+		50F7E16126F9E50D0041EED8 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				50F7E15F26F9E4EA0041EED8 /* MainViewController.swift */,
+				50F7E15B26F9E4500041EED8 /* MainView.swift */,
+				50F7E15D26F9E4620041EED8 /* MainModel.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		50F7E16226F9E6570041EED8 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				50F7E16326F9E66D0041EED8 /* Const.swift */,
+				50F7E16526F9EB100041EED8 /* Utility.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +290,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				50A5EC0726F20216006E1F46 /* ViewController.swift in Sources */,
+				50F7E15C26F9E4500041EED8 /* MainView.swift in Sources */,
 				50A5EC0326F20216006E1F46 /* AppDelegate.swift in Sources */,
+				50F7E16026F9E4EA0041EED8 /* MainViewController.swift in Sources */,
+				50F7E16626F9EB100041EED8 /* Utility.swift in Sources */,
+				50F7E15E26F9E4620041EED8 /* MainModel.swift in Sources */,
 				50A5EC0526F20216006E1F46 /* SceneDelegate.swift in Sources */,
+				50F7E16426F9E66D0041EED8 /* Const.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
