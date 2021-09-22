@@ -20,8 +20,41 @@ class MainViewController: UIViewController {
 
         let mainView = self.view as! MainView
         
+        // カメラ画面に遷移する
+        mainView.cameraButton.addTarget(self, action: #selector(self.onClickCamera(_:)), for: .touchUpInside)
+        // 写真編集画面に遷移する
+        mainView.editPhotoButton.addTarget(self, action: #selector(self.onClickEditPhoto(_:)), for: .touchUpInside)
+        // オプション画面に遷移する
+        mainView.optionButton.addTarget(self, action: #selector(self.onClickOption(_:)), for: .touchUpInside)
+        
     }
     
+    /**
+     * parameter UIButton
+     * return none
+     * カメラボタンのイベント
+     */
+    @objc func onClickCamera(_ sender: UIButton) {
+        print("カメラボタンだよ")
+    }
+    
+    /**
+     * parameter UIButton
+     * return none
+     * 写真編集ボタンのイベント
+     */
+    @objc func onClickEditPhoto(_ sender: UIButton) {
+        print("写真編集ボタンだよ")
+    }
+    
+    /**
+     * parameter UIButton
+     * return none
+     * 写真編集ボタンのイベント
+     */
+    @objc func onClickOption(_ sender: UIButton) {
+        print("オプションボタンだよ")
+    }
 
     /*
     // MARK: - Navigation

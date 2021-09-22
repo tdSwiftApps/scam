@@ -11,8 +11,8 @@ import UIKit
 class Utility {
     
     /**
-     *
-     *
+     * parameter CGFloat
+     * return CGFloat
      * 角丸の値を返す
      */
     static func roundedCornerValue(width: CGFloat) -> CGFloat {
