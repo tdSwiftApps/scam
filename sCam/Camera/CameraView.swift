@@ -10,8 +10,18 @@ import UIKit
 
 class CameraView: UIView {
     
+    // 画像を表示するビュー
+    var captureImageView: UIImageView!
+    
     required init(model: CameraModel) {
+        // 画像を表示するビュー
+        captureImageView = UIImageView()
+        
         super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        
+        // 画像を表示するビュー
+        captureImageView.frame = CGRect(x: 0, y: 0, width: Const.width, height: Const.width / 3 * 4)
+        captureImageView.layer.position = CGPoint(x: Const.width / 2, y: Const.height * 0.45)
     }
     
     required init?(coder: NSCoder) {

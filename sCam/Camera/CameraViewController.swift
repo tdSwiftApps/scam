@@ -25,7 +25,8 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        // カメラの設定
+        setupCamera()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -95,6 +96,46 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         }
     }
     
+    /**
+     * parameter AVCaptureOutput, CMSampleBuffer, AVCaptureConnection
+     * return none
+     * 新しいキャプチャの追加で呼ばれる
+     */
+    func captureOutput(_ output: AVCaptureOutput, didDrop sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        // キャプチャしたSampleBufferからUIImageを作成
+        let image: UIImage = self.captureImage(sampleBuffer)
+        // 画面サイズの調整
+        let cropImage = image.cgImage
+        let croppedImage = UIImage(cgImage: cropImage!, scale: image.scale, orientation: .right)
+        // カメラの画像を画面に表示
+        DispatchQueue.main.async {
+            let cameraView = self.view as! CameraView
+            cameraView.captureImageView.image = croppedImage
+        }
+    }
+    
+    /**
+     * parameter CMSampleBuffer
+     * return UIImage
+     * UIImageに変換する
+     */
+    func captureImage(_ sampleBuffer: CMSampleBuffer) -> UIImage {
+        // 画像を取得
+        let imageBuffer: CVImageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)!
+        // ピクセルを固定
+        CVPixelBufferLockBaseAddress(imageBuffer, CVPixelBufferLockFlags(rawValue: 0))
+        let baseAddress: UnsafeMutableRawPointer = CVPixelBufferGetBaseAddressOfPlane(imageBuffer, 0)!
+        let bytesPerRow: Int = CVPixelBufferGetBytesPerRow(imageBuffer)
+        let width: Int = CVPixelBufferGetWidth(imageBuffer)
+        let height: Int = CVPixelBufferGetHeight(imageBuffer)
+        // RGBの設定
+        let colorSpace: CGColorSpace = CGColorSpaceCreateDeviceRGB()
+        let newContext: CGContext = CGContext(data: baseAddress, width: width, height: height, bitsPerComponent: 8, bytesPerRow: bytesPerRow, space: colorSpace, bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue|CGBitmapInfo.byteOrder32Little.rawValue)!
+        let imageRef: CGImage = newContext.makeImage()!
+        let resultImage = UIImage(cgImage: imageRef, scale: 1.0, orientation: .right)
+        
+        return resultImage
+    }
 
     /*
     // MARK: - Navigation
