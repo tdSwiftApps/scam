@@ -35,7 +35,10 @@ class MainViewController: UIViewController {
      * カメラボタンのイベント
      */
     @objc func onClickCamera(_ sender: UIButton) {
-        print("カメラボタンだよ")
+        let presentingView = presentingViewController as! ViewController
+        self.dismiss(animated: false, completion: {
+            presentingView.transitionView(viewName: Const.cameraView)
+        })
     }
     
     /**

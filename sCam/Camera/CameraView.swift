@@ -22,6 +22,8 @@ class CameraView: UIView {
         // 画像を表示するビュー
         captureImageView.frame = CGRect(x: 0, y: 0, width: Const.width, height: Const.width / 3 * 4)
         captureImageView.layer.position = CGPoint(x: Const.width / 2, y: Const.height * 0.45)
+        
+        self.addSubview(captureImageView)
     }
     
     required init?(coder: NSCoder) {

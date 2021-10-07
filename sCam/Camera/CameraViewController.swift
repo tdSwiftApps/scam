@@ -48,7 +48,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
      * カメラの設定
      */
     private func setupCamera() {
-        // キャプチャに関する入力管理
+        // キャプチャに関する入出力管理
         session = AVCaptureSession()
         // キャプチャ・クオリティの設定
         session.sessionPreset = .photo
@@ -62,7 +62,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         } catch let error as NSError {
             print(error)
         }
-        // 入力をセッションにに追加
+        // 入力をセッションに追加
         if (session.canAddInput(input)) {
             session.addInput(input)
         }
@@ -74,7 +74,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         }
         // ピクセルフォーマットを32bit RGB+Aとする
         output.videoSettings = [kCVPixelBufferPixelFormatTypeKey as AnyHashable as! String: Int(kCVPixelFormatType_32BGRA)]
-        // プレーむをキャプチャするためのサブスレッド用のシリアルキューを用意
+        // フレームをキャプチャするためのサブスレッド用のシリアルキューを用意
         output.setSampleBufferDelegate(self, queue: DispatchQueue.main)
         
         videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session)
@@ -101,14 +101,14 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
      * return none
      * 新しいキャプチャの追加で呼ばれる
      */
-    func captureOutput(_ output: AVCaptureOutput, didDrop sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         // キャプチャしたSampleBufferからUIImageを作成
         let image: UIImage = self.captureImage(sampleBuffer)
         // 画面サイズの調整
         let cropImage = image.cgImage
         let croppedImage = UIImage(cgImage: cropImage!, scale: image.scale, orientation: .right)
         // カメラの画像を画面に表示
-        DispatchQueue.main.async {
+        DispatchQueue.main.async() {
             let cameraView = self.view as! CameraView
             cameraView.captureImageView.image = croppedImage
         }

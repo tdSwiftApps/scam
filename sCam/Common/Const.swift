@@ -16,5 +16,6 @@ class Const {
     
     // 画面種類
     static let mainView = "MainView"
+    static let cameraView = "CameraView"
     
 }

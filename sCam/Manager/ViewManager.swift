@@ -35,6 +35,8 @@ class ViewManager {
         switch viewName {
         case Const.mainView:
             viewController = MainViewController()
+        case Const.cameraView:
+            viewController = CameraViewController()
         default:
             viewController = MainViewController()
         }
