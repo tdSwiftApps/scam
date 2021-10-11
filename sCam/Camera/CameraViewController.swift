@@ -25,6 +25,11 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // CameraView
+        let cameraView = self.view as! CameraView
+        
+        // シャッターのイベント設定
+        cameraView.shutter.addTarget(self, action: #selector(self.onClickShutter(_:)), for: .touchUpInside)
         // カメラの設定
         setupCamera()
     }
@@ -135,6 +140,15 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         let resultImage = UIImage(cgImage: imageRef, scale: 1.0, orientation: .right)
         
         return resultImage
+    }
+    
+    /**
+     * parameter UIButton
+     * return none
+     * シャッターイベント
+     */
+    @objc func onClickShutter(_ sender: UIButton) {
+        print("シャッターが押された！")
     }
 
     /*
