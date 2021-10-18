@@ -30,6 +30,8 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         
         // シャッターのイベント設定
         cameraView.shutter.addTarget(self, action: #selector(self.onClickShutter(_:)), for: .touchUpInside)
+        // カメラサイズ変更ボタンのイベント
+        cameraView.resizeCaptureImage.addTarget(self, action: #selector(self.onClickResizeCamera(_:)), for: .touchUpInside)
         // カメラの設定
         setupCamera()
     }
@@ -149,6 +151,15 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
      */
     @objc func onClickShutter(_ sender: UIButton) {
         print("シャッターが押された！")
+    }
+    
+    /**
+     * parameter UIButton
+     * return none
+     * カメラサイズ変更イベント
+     */
+    @objc func onClickResizeCamera(_ sender: UIButton) {
+        print("カメラサイズ変更")
     }
 
     /*
