@@ -18,4 +18,7 @@ class Const {
     static let mainView = "MainView"
     static let cameraView = "CameraView"
     
+    // オプションキー
+    static let option_display_size = "DisplaySize"
+    
 }
