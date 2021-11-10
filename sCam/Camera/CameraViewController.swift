@@ -161,6 +161,18 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     @objc func onClickResizeCamera(_ sender: UIButton) {
         print("カメラサイズ変更")
     }
+    
+    /**
+     * parameter
+     * return none
+     * 表示している画像のサイズを変更する
+     */
+    func changeCaptureImageViewSize(sizeType: Int) {
+        let cameraView = self.view as! CameraView
+        UIView.animate(withDuration: 1, animations: {
+            cameraView.captureImageView.frame = self.cameraModel.captureImageViewSize(sizeType: sizeType)
+        })
+    }
 
     /*
     // MARK: - Navigation
