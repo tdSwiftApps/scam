@@ -160,10 +160,13 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
      */
     @objc func onClickResizeCamera(_ sender: UIButton) {
         print("カメラサイズ変更")
+        let selectionView = SelectionViewController()
+        selectionView.modalPresentationStyle = .overCurrentContext
+        self.present(selectionView, animated: false, completion: nil)
     }
     
     /**
-     * parameter
+     * parameter Int
      * return none
      * 表示している画像のサイズを変更する
      */
